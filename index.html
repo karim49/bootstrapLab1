@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register Forms</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .form-container {
+            display: none;
+        }
+        .form-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Login Form -->
+    <div id="login-form" class="form-container active">
+        <h2>Login</h2>
+        <form>
+            <div class="form-group">
+                <label for="login-email">Email address</label>
+                <input type="email" class="form-control" id="login-email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Password" required>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me">
+                <label class="form-check-label" for="remember-me">Remember Me</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="button" class="btn btn-link mt-3" id="go-to-register">Don't have an account? Register here</button>
+        </form>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="form-container">
+        <h2>Register</h2>
+        <form>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" class="form-control" id="full-name" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email address</label>
+                <input type="email" class="form-control" id="register-email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" class="form-control" id="phone-number" placeholder="Enter phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" class="form-control" id="register-password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">
+                        Female
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" id="register-btn">Register</button>
+            <button type="button" class="btn btn-link mt-3" id="go-to-login">Already have an account? Login here</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Switch to Register Form
+    document.getElementById('go-to-register').addEventListener('click', function() {
+        document.getElementById('login-form').classList.remove('active');
+        document.getElementById('register-form').classList.add('active');
+    });
+
+    // Switch to Login Form
+    document.getElementById('go-to-login').addEventListener('click', function() {
+        document.getElementById('register-form').classList.remove('active');
+        document.getElementById('login-form').classList.add('active');
+    });
+
+    // Handle Register Button Click
+    document.getElementById('register-btn').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+        alert('Registration successful! Redirecting to Login...');
+        document.getElementById('register-form').classList.remove('active');
+        document.getElementById('login-form').classList.add('active');
+    });
+</script>
+
+</body>
+</html>
